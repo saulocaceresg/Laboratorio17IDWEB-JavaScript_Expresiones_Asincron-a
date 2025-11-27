@@ -21,3 +21,13 @@ try {
     console.log(e.message);
 }
 
+// 5.	Que console.log genere un error de cualquier tipo, en el catch imprimir “falló” y en finally imprimir “siempre se ejecuta”
+console.log("Ejercicio 3 (5.)\n\"Finally\"");
+
+try {
+    console.log(3/a);
+} catch (e) {
+    console.log("Falló");
+} finally {
+    console.log("Siempre se ejecuta");
+}
