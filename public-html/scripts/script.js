@@ -150,5 +150,37 @@ dividirAsync(27, 0, (mensaje, resultado) => {
     if (mensaje === null) {
         mensaje = "Sin problemas." // Reemplaza el mensaje para que no escriba null
     }
-    console.log(mensaje + "\nResultado: " +  resultado); // Imprime el resultado
+    // console.log(mensaje + "\nResultado: " +  resultado); // Imprime el resultado
+});
+
+// 12.	Crea una función llamada procesarLista. Debe recibir un arreglo de números, un callback, por cada número del arreglo esperar entre 500 y 1500 ms usando setTimeout. Imprimir "Procesando <numero>..." y cuando todos los números estén procesados llamar al callback final con el mensaje "Proceso completado"
+console.log("+----------------------------+\nEjercicio 10 (12.)\n\"Callback y tiempo\"");
+
+function procesarLista(numeros, callback) {
+
+    let tiempoTotal = 0;
+    for (let i = 0; i < numeros.length; i++) {
+
+        let tiempo = Math.floor(Math.random () * (1500 - 500 + 1) + 500);
+        tiempoTotal += tiempo;  // Se establece el tiempo entre números. (Se multiplica por el iterador para que no se impriman todos a la vez.)
+        
+        setTimeout(() => {
+            console.log("Procesando número...");
+        }, tiempoTotal - 500);
+        
+        setTimeout(() => {
+            console.log(numeros[i]);
+            if (i === numeros.length - 1) {
+                callback("Proceso Completado"); // Se imprime si ya llegó al último número
+            }
+        }, tiempoTotal);
+        
+    }
+    
+}
+
+let arrayNumeros = [2, 43, -2, 1, 0, 12, 6, -7, -1, 43];
+
+procesarLista(arrayNumeros, procesado => {
+    console.log("Estado del proceso:", procesado);
 });
