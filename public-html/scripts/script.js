@@ -201,6 +201,28 @@ function cargarMensajePromesa() {
 }
 
 // Se ejecuta el método
-cargarMensajePromesa ()
-    .then(reponse => console.log(reponse))
+// cargarMensajePromesa ()
+//     .then(reponse => console.log(reponse))
+//     .catch(error => console.error(error));
+
+// 14.	Ejercicio 10 con promesas
+// (10.	Crea una función llamada cargarUsuario que reciba un callback. La función debe esperar entre 800 ms y 1500 ms (tiempo aleatorio usando setTimeout). Luego debe llamar al callback con un objeto que represente un usuario (id y nombre). El callback debe imprimir el usuario formateado, por ejemplo: Usuario cargado: Juancito (ID: 1))
+console.log("+----------------------------+\nEjercicio 12 (11.)\n\"Callback y objeto (promesas)\"");
+
+function cargarUsuarioPromise() {
+    let tiempo = Math.floor(Math.random() * (1500 - 800 + 1) + 800); // Se establece el tiempo
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const objeto = {nombre: "Juan", id: 1}; // Se crea el objeto
+            resolve(objeto);
+        }, tiempo);
+    });
+}
+
+cargarUsuarioPromise()
+    .then(response => {
+        console.log("Usuario cargado: " + response.nombre + " (ID: " + response.id + ")"); // Se formatea el objeto
+    })
     .catch(error => console.error(error));
+
