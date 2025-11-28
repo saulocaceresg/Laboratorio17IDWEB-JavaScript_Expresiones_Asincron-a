@@ -181,6 +181,26 @@ function procesarLista(numeros, callback) {
 
 let arrayNumeros = [2, 43, -2, 1, 0, 12, 6, -7, -1, 43];
 
-procesarLista(arrayNumeros, procesado => {
-    console.log("Estado del proceso:", procesado);
-});
+// procesarLista(arrayNumeros, procesado => {
+//     console.log("Estado del proceso:", procesado);
+// });
+
+// 13.	Ejercicio 9 con promesas
+// (9.	Crear una función llamada cargarMensaje que reciba un callback, espere 1 segundo utilizando setTimeout y llame al callback con el mensaje: "Mensaje cargado" que deberá ser impreso en pantalla)
+console.log("+----------------------------+\nEjercicio 11 (13.)\n\"Callback y tiempo (Promesas)\"");
+
+function cargarMensajePromesa() {
+    console.log("Iniciando tarea...");
+
+    // Promesa
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Mensaje cargado");
+        }, 1000);    
+    });
+}
+
+// Se ejecuta el método
+cargarMensajePromesa ()
+    .then(reponse => console.log(reponse))
+    .catch(error => console.error(error));
