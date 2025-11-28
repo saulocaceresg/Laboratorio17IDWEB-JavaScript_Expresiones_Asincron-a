@@ -10,7 +10,7 @@ try {
 
 // 4.	Generar un SyntaxError usando JSON.parse con texto inválido. En el catch mostrar e.name y e.message
 
-console.log("Ejercicio 2 (4.)\nJSON inválido");
+console.log("+----------------------------+\nEjercicio 2 (4.)\nJSON inválido");
 
 try {
     let textoJSON = "{nombre: 'Pedro'}";
@@ -22,7 +22,7 @@ try {
 }
 
 // 5.	Que console.log genere un error de cualquier tipo, en el catch imprimir “falló” y en finally imprimir “siempre se ejecuta”
-console.log("Ejercicio 3 (5.)\n\"Finally\"");
+console.log("+----------------------------+\nEjercicio 3 (5.)\n\"Finally\"");
 
 try {
     console.log(3/a);
@@ -30,4 +30,25 @@ try {
     console.log("Falló");
 } finally {
     console.log("Siempre se ejecuta");
+}
+
+// 6.	Definir una función validarEdad(edad), si edad < 0 o no es número, lanzar un error ("Edad inválida"). Capturar y mostrar el error
+console.log("+----------------------------+\nEjercicio 4 (6.)\n\"Excepciones con función\"");
+
+function validarEdad(edad) {
+    if (edad < 0 || isNaN(edad)) {
+        throw new Error("Edad inválida");
+    }
+}
+
+try {
+    validarEdad(-23);
+} catch (e) {
+    console.error(e.message);
+}
+
+try {
+    validarEdad("numero");
+} catch (e) {
+    console.error(e.message);
 }
