@@ -115,5 +115,20 @@ function cargarMensaje(callback) {
 }
 
 cargarMensaje(resultado => {
-    console.log("Callback recibido:", resultado);
+    // console.log("Callback recibido:", resultado);
+});
+
+// 10.	Crea una función llamada cargarUsuario que reciba un callback. La función debe esperar entre 800 ms y 1500 ms (tiempo aleatorio usando setTimeout). Luego debe llamar al callback con un objeto que represente un usuario (id y nombre). El callback debe imprimir el usuario formateado, por ejemplo: Usuario cargado: Juancito (ID: 1)
+console.log("+----------------------------+\nEjercicio 8 (10.)\n\"Callback y objeto\"");
+
+function cargarUsuario(callback) {
+    let tiempo = Math.floor(Math.random() * (1500 - 800 + 1) + 800); // Se establece el tiempo
+    setTimeout(() => {
+        const objeto = {nombre: "Juan", id: 1}; // Se crea el objeto
+        callback(objeto);
+    }, tiempo);
+}
+
+cargarUsuario(usuario => {
+    console.log("Usuario cargado: " + usuario.nombre + " (ID: " + usuario.id + ")"); // Se formatea el objeto
 });
