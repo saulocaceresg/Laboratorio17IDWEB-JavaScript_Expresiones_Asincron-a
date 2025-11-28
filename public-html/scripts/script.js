@@ -104,3 +104,16 @@ try {
 } catch (e) {
     console.error("ERROR FINAL. Capturado en el nivel superior: ", e.message);
 }
+
+// 9.	Crear una función llamada cargarMensaje que reciba un callback, espere 1 segundo utilizando setTimeout y llame al callback con el mensaje: "Mensaje cargado" que deberá ser impreso en pantalla
+console.log("+----------------------------+\nEjercicio 7 (9.)\n\"Callback\"");
+
+function cargarMensaje(callback) {
+    setTimeout(() => {
+        callback("Mensaje cargado");
+    }, 1000);
+}
+
+cargarMensaje(resultado => {
+    console.log("Callback recibido:", resultado);
+});
