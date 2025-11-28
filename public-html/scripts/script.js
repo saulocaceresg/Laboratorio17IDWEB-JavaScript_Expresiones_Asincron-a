@@ -130,5 +130,25 @@ function cargarUsuario(callback) {
 }
 
 cargarUsuario(usuario => {
-    console.log("Usuario cargado: " + usuario.nombre + " (ID: " + usuario.id + ")"); // Se formatea el objeto
+    // console.log("Usuario cargado: " + usuario.nombre + " (ID: " + usuario.id + ")"); // Se formatea el objeto
+});
+
+// 11.	Crea una función dividirAsync que reciba a, b y un callback. Espere 1.5 segundos. Si b === 0, llame a callback(new Error("No se puede dividir entre cero"), null); Si no, llame a: callback(null, a / b);
+console.log("+----------------------------+\nEjercicio 9 (11.)\n\"Callback: división entre cero\"");
+
+function dividirAsync(a, b, callback) {
+    setTimeout(() => {
+        if (b === 0) {
+            callback(new Error("No se puede dividir entre cero"), null);
+        } else {
+            callback(null, a / b);
+        }
+    }, 1500);
+}
+
+dividirAsync(27, 0, (mensaje, resultado) => {
+    if (mensaje === null) {
+        mensaje = "Sin problemas." // Reemplaza el mensaje para que no escriba null
+    }
+    console.log(mensaje + "\nResultado: " +  resultado); // Imprime el resultado
 });
