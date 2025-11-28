@@ -52,3 +52,25 @@ try {
 } catch (e) {
     console.error(e.message);
 }
+
+// 7.	Dentro de try provocar un TypeError. Ejemplo: let x = null; x.nombre;
+// En catch verificar con instanceof si es TypeError. Imprimir un mensaje distinto según el tipo
+console.log("+----------------------------+\nEjercicio 5 (7.)\n\"TypeError\"");
+
+try {
+    // let x = {nombre: 'Juan'};
+    // let xJson = JSON.parse(x);
+    let x = null;
+    x.nombre;
+    console.log(x);
+} catch (e) {
+    if (e instanceof TypeError) {
+        console.error("Se ha detectado un TypeError");
+    } else if (e instanceof SyntaxError) {
+        console.error("Se ha detectado un SyntaxError");
+    } else {
+        console.log("Error general");
+        console.error("Mensaje: ", e.message);
+    }
+}
+
