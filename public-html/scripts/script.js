@@ -220,9 +220,30 @@ function cargarUsuarioPromise() {
     });
 }
 
-cargarUsuarioPromise()
-    .then(response => {
-        console.log("Usuario cargado: " + response.nombre + " (ID: " + response.id + ")"); // Se formatea el objeto
-    })
-    .catch(error => console.error(error));
+// cargarUsuarioPromise()
+//     .then(response => {
+//         console.log("Usuario cargado: " + response.nombre + " (ID: " + response.id + ")"); // Se formatea el objeto
+//     })
+//     .catch(error => console.error(error));
 
+
+// 15.	Ejercicio 11 con promesas
+// (11.	Crea una función dividirAsync que reciba a, b y un callback. Espere 1.5 segundos. Si b === 0, llame a callback(new Error("No se puede dividir entre cero"), null); Si no, llame a: callback(null, a / b);)
+console.log("+----------------------------+\nEjercicio 13 (12.)\n\"Callback: división entre cero (Promesas)\"");
+
+function dividirAsyncPromise(a, b) {
+
+    return new Promise((resolve, reject) => {    
+        setTimeout(() => {
+            if (b === 0) {
+                reject(new Error("No se puede dividir entre cero")); // Se aplica el error a rejecto como corresponde
+            } else {
+                resolve(a / b); // Se aplica una respuesta correccta a resolve
+            }
+        }, 1500);
+    });
+}
+
+dividirAsyncPromise(210, 32)
+    .then(response => console.log(response))
+    .catch(error => console.error(error));
