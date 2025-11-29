@@ -323,6 +323,28 @@ async function cargarUsuarioAsyncAwait() {
     }
 }
 
-cargarUsuarioAsyncAwait();
+// cargarUsuarioAsyncAwait();
 
+// 19.	Ejercicio 11 con async/await
+// (11.	Crea una función dividirAsync que reciba a, b y un callback. Espere 1.5 segundos. Si b === 0, llame a callback(new Error("No se puede dividir entre cero"), null); Si no, llame a: callback(null, a / b);)
+console.log("+----------------------------+\nEjercicio 16 (19.)\n\"Callback: división entre cero (async/await)\"");
 
+async function dividirAsyncAwait(a, b) {
+    const response = await new Promise((resolve, reject) => {        
+        setTimeout(() => {
+            if (b === 0) {
+                // Se imprime los números y se asigna el error al reject
+                console.log("Números ingresados: " + a + "; " + b);
+                reject(new Error("No se puede dividir entre cero"));
+            } else {
+                // Se imprime los números y se asigna el error al resolve
+                console.log("Números ingresados: " + a + "; " + b);
+                resolve(a / b);
+            }
+        }, 1500);
+    });
+
+    console.log("Resultado: " + response);
+}
+
+dividirAsyncAwait(23, 10);
