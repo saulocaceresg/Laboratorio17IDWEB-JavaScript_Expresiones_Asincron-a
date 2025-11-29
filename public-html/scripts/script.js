@@ -300,4 +300,29 @@ async function cargarMensajeAsyncAwait() {
 
 }
 
-cargarMensajeAsyncAwait();
+// cargarMensajeAsyncAwait();
+
+// 18.	Ejercicio 10 con async/await
+// (10.	Crea una función llamada cargarUsuario que reciba un callback. La función debe esperar entre 800 ms y 1500 ms (tiempo aleatorio usando setTimeout). Luego debe llamar al callback con un objeto que represente un usuario (id y nombre). El callback debe imprimir el usuario formateado, por ejemplo: Usuario cargado: Juancito (ID: 1))
+console.log("+----------------------------+\nEjercicio 16 (18.)\n\"Callback y objeto (async/await)\"");
+
+async function cargarUsuarioAsyncAwait() {
+    let tiempo = Math.floor(Math.random() * (1500 - 800 + 1) + 800); // Se establece el tiempo
+
+    // Bloque try-catch para ejecutar la promesa
+    try {
+        const response = await new Promise ((resolve) => {
+            setTimeout(() => {
+                const objeto = {nombre: "Juan", id: 1}; // Se crea el objeto
+                resolve(objeto);
+            }, tiempo);
+        });
+        console.log("Usuario cargado: " + response.nombre + " (ID: " + response.id + ")");
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+cargarUsuarioAsyncAwait();
+
+
