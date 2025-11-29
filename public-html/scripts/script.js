@@ -347,4 +347,43 @@ async function dividirAsyncAwait(a, b) {
     console.log("Resultado: " + response);
 }
 
-dividirAsyncAwait(23, 10);
+// dividirAsyncAwait(23, 10);
+
+// 20.	Ejercicio 12 con async/await
+// (12.	Crea una función llamada procesarLista. Debe recibir un arreglo de números, un callback, por cada número del arreglo esperar entre 500 y 1500 ms usando setTimeout. Imprimir "Procesando <numero>..." y cuando todos los números estén procesados llamar al callback final con el mensaje "Proceso completado")
+console.log("+----------------------------+\nEjercicio 17 (20.)\n\"Callback y tiempo (async/await)\"");
+
+async function procesarListaAsyncAwait(numeros) {
+
+    try {
+        const response = await new Promise((resolve) => {
+            let tiempoTotal = 0;
+            
+            // forEach para recorrer arreglo
+            numeros.forEach((num, index) => {
+                let tiempo = Math.floor(Math.random () * (1500 - 500 + 1) + 500);
+                tiempoTotal += tiempo;  // Se establece el tiempo entre números. (Se multiplica por el iterador para que no se impriman todos a la vez.)
+                
+                setTimeout(() => {
+                    console.log("Procesando número...");
+                }, tiempoTotal - 500); // Se reduce medio segundo para que aparezca antes del siguiente número
+                
+                setTimeout(() => {
+                    console.log(num);
+                    if (index === numeros.length -1) {
+                        resolve("Estado del proceso: Proceso completado");
+                    }
+                }, tiempoTotal); 
+            });
+        });
+        console.log(response);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+    
+}
+
+let arrayNumerosAsyncAwait = [2, 43, -2, 1, 0, 12, 6, -7, -1, 43];
+
+procesarListaAsyncAwait(arrayNumerosAsyncAwait);
+
