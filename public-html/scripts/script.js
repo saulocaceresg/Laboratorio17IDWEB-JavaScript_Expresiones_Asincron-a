@@ -278,6 +278,26 @@ function procesarListaPromise(numeros) {
 
 let arrayNumerosPromise = [2, 43, -2, 1, 0, 12, 6, -7, -1, 43];
 
-procesarListaPromise(arrayNumerosPromise)
-    .then(response => console.log(response))
-    .catch(error => console.error(error));
+// procesarListaPromise(arrayNumerosPromise)
+//     .then(response => console.log(response))
+//     .catch(error => console.error(error));
+
+// 17.	Ejercicio 9 con async/await
+// (9.	Crear una función llamada cargarMensaje que reciba un callback, espere 1 segundo utilizando setTimeout y llame al callback con el mensaje: "Mensaje cargado" que deberá ser impreso en pantalla)
+console.log("+----------------------------+\nEjercicio 15 (17.)\n\"Callback (async/await)\"");
+
+async function cargarMensajeAsyncAwait() {
+
+    console.log("Esperando mensaje...");
+    
+    const resultado = await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Mensaje cargado");
+        }, 1000);
+    })
+
+    console.log(resultado);
+
+}
+
+cargarMensajeAsyncAwait();
