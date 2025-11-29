@@ -244,6 +244,40 @@ function dividirAsyncPromise(a, b) {
     });
 }
 
-dividirAsyncPromise(210, 32)
+// dividirAsyncPromise(210, 32)
+//     .then(response => console.log(response))
+//     .catch(error => console.error(error));
+
+// 16.	Ejercicio 12 con promesas
+// (12.	Crea una función llamada procesarLista. Debe recibir un arreglo de números, un callback, por cada número del arreglo esperar entre 500 y 1500 ms usando setTimeout. Imprimir "Procesando <numero>..." y cuando todos los números estén procesados llamar al callback final con el mensaje "Proceso completado")
+console.log("+----------------------------+\nEjercicio 14 (13.)\n\"Callback y tiempo (Promesas)\"");
+
+function procesarListaPromise(numeros) {
+
+    return new Promise((resolve) => {
+        let tiempoTotal = 0;
+
+        // forEach para recorrer arreglo
+        numeros.forEach((num, index) => {
+            let tiempo = Math.floor(Math.random () * (1500 - 500 + 1) + 500);
+            tiempoTotal += tiempo;  // Se establece el tiempo entre números. (Se multiplica por el iterador para que no se impriman todos a la vez.)
+
+            setTimeout(() => {
+                console.log("Procesando número...");
+            }, tiempoTotal);
+
+            setTimeout(() => {
+                console.log(num);
+                if (index === numeros.length -1) {
+                    resolve("Proceso completado");
+                }
+            }, tiempoTotal); 
+        });
+    });
+}
+
+let arrayNumerosPromise = [2, 43, -2, 1, 0, 12, 6, -7, -1, 43];
+
+procesarListaPromise(arrayNumerosPromise)
     .then(response => console.log(response))
     .catch(error => console.error(error));
